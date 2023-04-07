@@ -3,6 +3,7 @@ import win32api
 import win32con
 import tkinter as tk
 import clipboard
+from tkinter import ttk, filedialog, messagebox, simpledialog
 
 def generate_cartesian_products():
     # Define the set of elements
@@ -20,7 +21,7 @@ def generate_cartesian_products():
                 # Display a dialog box asking the user to specify the length limit
                 root = tk.Tk()
                 root.withdraw()
-                length_limit = tk.simpledialog.askinteger('Length Limit', 'Enter the length limit for the Cartesian products:', minvalue=1, maxvalue=10)
+                length_limit = simpledialog.askinteger('Length Limit', 'Enter the length limit for the Cartesian products:', minvalue=1, maxvalue=10)
                 
                 # Generate and submit Cartesian products of the specified length
                 for length in range(1, length_limit + 1):
@@ -38,7 +39,7 @@ def generate_cartesian_products():
                         win32api.keybd_event(win32con.VK_RETURN, 0, win32con.KEYEVENTF_KEYUP, 0)
                 
                 # Display a message indicating that the operation is complete
-                tk.messagebox.showinfo('Done', 'All Cartesian products have been submitted.')
+                messagebox.showinfo('Done', 'All Cartesian products have been submitted.')
                 
             # Wait for the next event
             win32api.Sleep(100)
